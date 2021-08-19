@@ -1,0 +1,49 @@
+/* Whole-page styling */
+* {
+    box-sizing: border-box;
+    padding: 5;
+    margin: 5;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: azure;
+}
+
+.gamenavbar {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lavenderblush;
+    font-size: 20px;
+}
+
+.timetimebaby {
+    float: inline-end;
+    font-size: 20px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#quizbox {
+    margin-top: 80px;
+    margin-right: auto;
+    margin-bottom: 80px;
+    margin-left: auto;
+    text-align: center;
+    padding: 5px 5px 10px 5px;
+    border-right: solid thistle 5px;
+    border-bottom: solid purple 5px;
+    
+}
+
+
+
+
+footer {
+    text-align: center;
+    padding: 30px;
+    margin: 30px;
+}

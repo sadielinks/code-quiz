@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Test ya Javascript!</title>
 </head>
+
 <body>
-<!-- nav bar to hold 'high scores' button and timer -->
+    <!-- nav bar to hold 'high scores' button and timer -->
     <nav class="gamenavbar">
-        <div>
-            <button id="#highscoresBtn">~View Highscores~</a>
-            <p id="timetimebaby">Countdown Here</p>
+        <div class="quizbuttons">
+            <button id="#quizbuttons">~View Highscores~</button>
         </div>
+        <div class="timetimebaby"
+        <p id="timetimebaby">Countdown Here</p>
+        <!-- </div> -->
     </nav>
 
-<!-- main section with headers and quiz -->
+    <!-- main section with headers and quiz -->
     <main>
+        <div id="quizbox">
         <!-- h1 will have 'welcome message' + 'game over' 'highscores' titles-->
-        <h1 class="pagetitles">Words Will Go Here</h1>
+        <h1 id="pagetitles">Words Will Go Here</h1>
         <!-- h2 will change to the current question lol I hope -->
-        <h2 class="questions"></h2>
-
+        <h2 id="questions"></h2>
+        <h3 id="answers">answer/wrong/right something</h3>
     </main>
-    
+
     <script src="assets/js/script.js"></script>
 </body>
+
+<footer>
+    <h4>Made with ✨ by Sadie Sial</h4>
+</footer>
+
 </html>
