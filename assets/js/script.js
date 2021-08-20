@@ -18,8 +18,43 @@ var question = [
         questionName: "This is a question here?",
         choices: ["answer1", "answer2", "answer3", "answer4"],
         answer: "answer1"
-} 
-// questions will continue here **answer has to be exactly like the choices words
+    }, 
+        {questionName: "This is a question here? 2",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 3",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 4",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 5",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 6",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 7",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 8",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 9",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }, 
+        {questionName: "This is a question here? 10",
+        choices: ["answer1", "answer2", "answer3", "answer4"],
+        answer: "answer1"
+    }
 ]
 
 // timer code goes here eventually
