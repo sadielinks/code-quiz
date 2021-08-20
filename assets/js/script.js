@@ -1,3 +1,4 @@
+// listing the global variables
 var quizStartHere = document.querySelector("#quizstartpage");
 var quizQuestionsHere = document.querySelector("#quizquestions");
 var quizScoresHere = document.querySelector("#quizhighscore");
@@ -17,7 +18,7 @@ var question = [
         questionName: "This is a question here?",
         choices: ["answer1", "answer2", "answer3", "answer4"],
         answer: "answer1"
-}
+} 
 // questions will continue here **answer has to be exactly like the choices words
 ]
 
