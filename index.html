@@ -13,21 +13,25 @@
     <!-- nav bar to hold 'high scores' button and timer -->
     <nav class="gamenavbar">
         <div class="quizbuttons">
-            <button id="#quizbuttons">~View Highscores~</button>
+        <button id="highScoreBtn" onclick="viewHighScore()"></button>
         </div>
-        <div class="timetimebaby"
-        <p id="timetimebaby">Countdown Here</p>
-        <!-- </div> -->
+        <div id="timetimebaby">Time: </div>
     </nav>
 
     <!-- main section with headers and quiz -->
     <main>
         <div id="quizbox">
         <!-- h1 will have 'welcome message' + 'game over' 'highscores' titles-->
-        <h1 id="pagetitles">Words Will Go Here</h1>
-        <!-- h2 will change to the current question lol I hope -->
-        <h2 id="questions"></h2>
-        <h3 id="answers">answer/wrong/right something</h3>
+            <h1 id="pagetitles">Words Will Go Here</h1>
+
+            <div>
+                <!-- h2 will change to the current question lol I hope -->
+                <h2 id="questions">I want questions to change in this area</h2>
+                <button id="startBtn">Start this JAM!</button>
+                <!-- <button id="highScoreBtn" onclick="viewHighScore"></button> -->
+                <!-- show ^^ twice?? idk lol let's see -->
+                <h3 id="answers">answer/wrong/right something</h3>
+            </div>
     </main>
 
     <script src="assets/js/script.js"></script>

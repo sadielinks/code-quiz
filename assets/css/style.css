@@ -13,18 +13,22 @@ body {
 .gamenavbar {
     display: flex;
     flex-wrap: wrap;
-    background-color: lavenderblush;
+    background-color: thistle;
     font-size: 20px;
 }
 
-.timetimebaby {
-    float: inline-end;
+#timetimebaby {
+    text-align: end;
     font-size: 20px;
 }
 
 main {
-    display: flex;
+    display: flex block;
     flex-wrap: wrap;
+    margin: 80px auto;
+    text-align: center;
+    /* transition: 0.3s; */
+    width: 60vw;
 }
 
 #quizbox {
@@ -34,13 +38,8 @@ main {
     margin-left: auto;
     text-align: center;
     padding: 5px 5px 10px 5px;
-    border-right: solid thistle 5px;
-    border-bottom: solid purple 5px;
-    
+    background-color: thistle;
 }
-
-
-
 
 footer {
     text-align: center;
