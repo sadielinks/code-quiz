@@ -41,9 +41,33 @@ main {
     margin-bottom: 80px;
     margin-left: auto;
     text-align: center;
+    content: center;
     padding: 5px 5px 10px 5px;
     background-color: thistle;
 }
+
+
+#quizquestions {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.buttongroup button{
+    border: 1px solid thistle;
+    color: black;
+    padding: 10px 24px;
+    cursor: pointer; 
+    width: 50%; 
+    display: block;
+}
+
+.buttongroup button:hover {
+    background-color:lavender;
+}
+
 
 footer {
     text-align: center;

@@ -7,11 +7,17 @@ var quizScoreBtn = document.querySelector("#submitBtn");
 var timeTimeBaby = document.querySelector("#timetimebaby");
 var finalScoresHere = document.querySelector("#quizhighscore");
 var initialsGoHere = document.querySelector("#intialsgohere");
-
+var currentQuestionIndex = 0;
+var finalQuestionIndex = currentQuestionIndex.length;
+var choiceBtnA = document.querySelector("#A");
+var choiceBtnB = document.querySelector("#B");
+var choiceBtnC = document.querySelector("#C");
+var choiceBtnD = document.querySelector("#D");
+var resultsEl = document.querySelector("#answers")
 var time = 100
 var timerInterval
 
-var currentQuestionIndex = 0;
+
 
 // Quiz questions + their respective answers
 var question = [
@@ -70,15 +76,15 @@ var question = [
 function timeTimeBaby() {
 
 var timerInterval = setInterval(function() {
-    secondsLeft--;
+    time--;
     timerInterval.textContent = secondsLeft + " seconds";
 
-    if(secondsLeft === 0) {
+    if(time === 0) {
       clearInterval(timerInterval);
       quizScoreHere();
     }
   }, 1000);
-// quizStartHere.style.display = "block";
+quizQuestionsHere.style.display = "block";
 }
 
 function startQuiz() {
