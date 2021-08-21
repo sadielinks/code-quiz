@@ -16,6 +16,8 @@ var choiceBtnD = document.querySelector("#D");
 var resultsEl = document.querySelector("#answers")
 var time = 100
 var timerInterval
+var questions = document.querySelector("#questions")
+
 
 
 
@@ -73,32 +75,52 @@ var question = [
     }
 ]
 
-function timeTimeBaby() {
-
-var timerInterval = setInterval(function() {
-    time--;
-    timerInterval.textContent = secondsLeft + " seconds";
-
-    if(time === 0) {
-      clearInterval(timerInterval);
-      quizScoreHere();
+//function to call questions
+function displayQuestion() {
+    if (currentQuestionIndex === finalQuestionIndex){
+        return 
     }
-  }, 1000);
-quizQuestionsHere.style.display = "block";
 }
 
+// make quiz option buttons clickable
+choiceBtnA.addEventListener("click", );
+choiceBtnB.addEventListener("click");
+choiceBtnC.addEventListener("click");
+choiceBtnD.addEventListener("click");
+
+// creating function to hide welcome, start the questions and timer
 function startQuiz() {
-    // start timer, hide start screen, unhide questions, call next function to get questions
+    //start timer, unhide questions, call next function to get questions
     quizStartHere.setAttribute("class", "hide")
-    quizQuestionsHere.removeAttribute("class", "hide")
+    quizQuestionsHere.removeAttribute("hide")
     timerId = setInterval(timerfunction, 1000);
     timeTimeBaby.textContent = time
-    //call function to get question
+    question;
 }
 
-//function to call questions
+// function quizQuestionsHere() {
+//     quizQuestionsHere.setAttribute("class", "hide")
+// }
+
+
+
 //var currentQuestion = question[currentQuestionIndex]
 
 
 quizStartBtn.addEventListener("click", startQuiz);
 
+
+// creating a function for a timer
+function timeTimeBaby() {
+
+    var timerInterval = setInterval(function() {
+        time--;
+        timerInterval.textContent = secondsLeft + " seconds";
+    
+        if(time === 0) {
+          clearInterval(timerInterval);
+          quizScoreHere();
+        }
+      }, 1000);
+    quizQuestionsHere.style.display = "block";
+    }
