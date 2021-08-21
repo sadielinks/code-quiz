@@ -20,7 +20,6 @@ var questions = document.querySelector("#questions")
 
 
 
-
 // Quiz questions + their respective answers as an object array
 var question = [
     {
@@ -75,11 +74,6 @@ var question = [
     }
 ]
 
-// *******function to call questions
-// function displayQuestion() {
-//     if (currentQuestionIndex === finalQuestionIndex){
-//         return quizScoresHere();
-//     }
 
 // var currentQuestion = 
 // // make quiz option buttons clickable
@@ -93,12 +87,24 @@ var question = [
 // ********creating function to hide welcome, start the questions and timer
 function startQuiz() {
     //start timer, unhide questions, call next function to get questions
-    quizStartHere.setAttribute("class", "hide")
-    quizQuestionsHere.removeAttribute("hide")
+    quizStartHere.setAttribute("class", "hide");
+    quizQuestionsHere.removeAttribute("hide");
     timerId = setInterval(timerfunction, 1000);
-    timeTimeBaby.textContent = time
+    timeTimeBaby.textContent = time;
     question;
 }
+
+// *******function for questions to start and proceed 
+function displayQuestion() {
+    quizScoresHere.style.display = "none";
+    if (currentQuestionIndex === finalQuestionIndex) {
+        return quizScoresHere();
+    }
+
+    var currentQuestion = question[currentQuestionIndex];
+
+}
+
 
 // function quizQuestionsHere() {
 //     quizQuestionsHere.setAttribute("class", "hide")
@@ -112,20 +118,21 @@ function startQuiz() {
 quizStartBtn.addEventListener("click", startQuiz);
 
 
-// creating a function for a timer
+// creating a function for timer that subtracts time when wrong answers are selected
 function timeTimeBaby() {
-
-    var timerInterval = setInterval(function() {
-        time--;
-        timerInterval.textContent = secondsLeft + " seconds";
-    
-        if(time === 0) {
-          clearInterval(timerInterval);
-          quizScoreHere();
+    var timerInterval = setInterval(function () {
+        if (time > 1) {
+            timeTimeBaby.textContent = time + " seconds";
+            time--;
+        } else if (time === 1) {
+            timeTimeBaby.textContent = time + " second!";
+            time--;
+        } else {
+            clearInterval(timerInterval);
+            quizScoreHere();
         }
-      }, 1000);
-    quizQuestionsHere.style.display = "block";
-    }
+    }, 1000);
+}
 
 
 quizStartBtn.addEventListener("click", startQuiz);

@@ -21,9 +21,10 @@ body {
     display: none;
 }
 
-#timetimebaby {
-    text-align: end;
+#timerdisplay {
+    text-justify: center;
     font-size: 20px;
+
 }
 
 main {
