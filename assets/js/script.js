@@ -21,7 +21,7 @@ var questions = document.querySelector("#questions")
 
 
 
-// Quiz questions + their respective answers
+// Quiz questions + their respective answers as an object array
 var question = [
     {
         questionName: "This is a question here?",
@@ -75,22 +75,22 @@ var question = [
     }
 ]
 
-//function to call questions
-function displayQuestion() {
-    if (currentQuestionIndex === finalQuestionIndex){
-        return quizScoresHere();
-    }
+// *******function to call questions
+// function displayQuestion() {
+//     if (currentQuestionIndex === finalQuestionIndex){
+//         return quizScoresHere();
+//     }
 
-var currentQuestion = 
-// make quiz option buttons clickable
-choiceBtnA.addEventListener("click", );
-choiceBtnB.addEventListener("click");
-choiceBtnC.addEventListener("click");
-choiceBtnD.addEventListener("click");
-}
+// var currentQuestion = 
+// // make quiz option buttons clickable
+// choiceBtnA.addEventListener("click";
+// choiceBtnB.addEventListener("click");
+// choiceBtnC.addEventListener("click");
+// choiceBtnD.addEventListener("click");
+// }
 
 
-// creating function to hide welcome, start the questions and timer
+// ********creating function to hide welcome, start the questions and timer
 function startQuiz() {
     //start timer, unhide questions, call next function to get questions
     quizStartHere.setAttribute("class", "hide")
@@ -126,3 +126,6 @@ function timeTimeBaby() {
       }, 1000);
     quizQuestionsHere.style.display = "block";
     }
+
+
+quizStartBtn.addEventListener("click", startQuiz);
