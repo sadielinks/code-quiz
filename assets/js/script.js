@@ -53,21 +53,16 @@ var questionShownInQuiz = [
     }
 ]
 
-// make quiz option buttons clickable by adding event listener
-choiceBtnA.addEventListener("click", rightAnswer);
-choiceBtnB.addEventListener("click", rightAnswer);
-choiceBtnC.addEventListener("click", rightAnswer);
-choiceBtnD.addEventListener("click", rightAnswer);
-
 // creating function to hide start page, start the questions and timer
 function startQuiz() {
     //start timer, unhide questions, call next function to get questions
     quizStartHere.setAttribute("class", "hide");
-    quizQuestionsHere.removeAttribute("hide");
+    quizQuestionsHere.removeAttribute("class", "hide");
     timerId = setInterval(timerfunction, 1000);
     timeTimeBaby.textContent = time;
-    questionShownInQuiz;
+    questionShownInQuiz();
 }
+/* ^^ the start button event listener is at the bottom of thi js */
 
 // function for questions to start and proceed 
 function displayQuestion() {
@@ -76,15 +71,15 @@ function displayQuestion() {
     if (currentQuestionIndex === finalQuestionIndex) {
         return quizScoresHere();
     } return quizScoresHere();
-
+̀̀̀
     var currentQuestion = questionShownInQuiz[currentQuestionIndex];
 
 }
 
 
-function quizQuestionsHere() {
-    quizQuestionsHere.setAttribute("class", "hide")
-}
+// function quizQuestionsHere() {
+//     quizQuestionsHere.setAttribute("class", "hide")
+// }
 
 
 
@@ -92,6 +87,7 @@ function quizQuestionsHere() {
 
 // creating a function for timer that subtracts time when wrong answers are selected
 function timeTimeBaby() {
+    var time = 100
     var timerInterval = setInterval(function () {
         if (time > 1) {
             timeTimeBaby.textContent = time + " seconds";
@@ -108,3 +104,9 @@ function timeTimeBaby() {
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
+
+// choices of each question become clickable when selected
+choiceBtnA.addEventListener("click", rightAnswer);
+choiceBtnB.addEventListener("click", rightAnswer);
+choiceBtnC.addEventListener("click", rightAnswer);
+choiceBtnD.addEventListener("click", rightAnswer);

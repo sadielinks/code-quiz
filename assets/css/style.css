@@ -22,7 +22,7 @@ body {
 }
 
 #timerdisplay {
-    text-justify: center;
+    text-justify: right;
     font-size: 20px;
 
 }
