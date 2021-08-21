@@ -19,104 +19,76 @@ var timerInterval
 var questions = document.querySelector("#questions")
 
 
-
-// Quiz questions + their respective answers as an object array
-var question = [
+// Quiz question array with all possible options & correct answers
+var questionShownInQuiz = [
     {
-        questionName: "This is a question here?",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        questionName: "Which is NOT a way to declare a variable in JavaScript?",
+        allChoices: ["var", "let", "allow", "const"],
+        rightAnswer: "allow"
     },
     {
-        questionName: "This is a question here? 2",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        questionName: "Which would you use to write into the HTML element?",
+        allChoices: ["document.write()", "window.alert()", "console.log()", "innerHTML"],
+        rightAnswer: "innerHTML"
     },
     {
-        questionName: "This is a question here? 3",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        questionName: "If a key has a function as a value, it is called a _?",
+        allChoices: ["method", "value", "expression", "variable"],
+        rightAnswer: "method"
     },
     {
-        questionName: "This is a question here? 4",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        questionName: "The length property return the length of a __?",
+        allChoices: ["string", "boolean", "number", "value pair"],
+        rightAnswer: "string"
     },
     {
         questionName: "This is a question here? 5",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        allChoices: ["answer1", "answer2", "answer3", "answer4"],
+        rightAnswer: "answer1"
     },
     {
         questionName: "This is a question here? 6",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
-    },
-    {
-        questionName: "This is a question here? 7",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
-    },
-    {
-        questionName: "This is a question here? 8",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
-    },
-    {
-        questionName: "This is a question here? 9",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
-    },
-    {
-        questionName: "This is a question here? 10",
-        choices: ["answer1", "answer2", "answer3", "answer4"],
-        answer: "answer1"
+        allChoices: ["answer1", "answer2", "answer3", "answer4"],
+        rightAnswer: "answer1"
     }
 ]
 
+// make quiz option buttons clickable by adding event listener
+choiceBtnA.addEventListener("click", rightAnswer);
+choiceBtnB.addEventListener("click", rightAnswer);
+choiceBtnC.addEventListener("click", rightAnswer);
+choiceBtnD.addEventListener("click", rightAnswer);
 
-// var currentQuestion = 
-// // make quiz option buttons clickable
-// choiceBtnA.addEventListener("click";
-// choiceBtnB.addEventListener("click");
-// choiceBtnC.addEventListener("click");
-// choiceBtnD.addEventListener("click");
-// }
-
-
-// ********creating function to hide welcome, start the questions and timer
+// creating function to hide start page, start the questions and timer
 function startQuiz() {
     //start timer, unhide questions, call next function to get questions
     quizStartHere.setAttribute("class", "hide");
     quizQuestionsHere.removeAttribute("hide");
     timerId = setInterval(timerfunction, 1000);
     timeTimeBaby.textContent = time;
-    question;
+    questionShownInQuiz;
 }
 
-// *******function for questions to start and proceed 
+// function for questions to start and proceed 
 function displayQuestion() {
+    var currentQuestion = displayQuestion
     quizScoresHere.style.display = "none";
     if (currentQuestionIndex === finalQuestionIndex) {
         return quizScoresHere();
-    }
+    } return quizScoresHere();
 
-    var currentQuestion = question[currentQuestionIndex];
+    var currentQuestion = questionShownInQuiz[currentQuestionIndex];
 
 }
 
 
-// function quizQuestionsHere() {
-//     quizQuestionsHere.setAttribute("class", "hide")
-// }
+function quizQuestionsHere() {
+    quizQuestionsHere.setAttribute("class", "hide")
+}
 
 
 
 //var currentQuestion = question[currentQuestionIndex]
-
-
-quizStartBtn.addEventListener("click", startQuiz);
-
 
 // creating a function for timer that subtracts time when wrong answers are selected
 function timeTimeBaby() {
@@ -134,5 +106,5 @@ function timeTimeBaby() {
     }, 1000);
 }
 
-
+// start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
