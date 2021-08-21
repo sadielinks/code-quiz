@@ -64,6 +64,10 @@ function startQuiz() {
 }
 /* ^^ the start button event listener is at the bottom of thi js */
 
+function quizQuestionsHere() {
+    
+}
+
 // function for questions to start and proceed 
 function displayQuestion() {
     var currentQuestion = displayQuestion
@@ -71,17 +75,10 @@ function displayQuestion() {
     if (currentQuestionIndex === finalQuestionIndex) {
         return quizScoresHere();
     } return quizScoresHere();
-̀̀̀
+
     var currentQuestion = questionShownInQuiz[currentQuestionIndex];
 
 }
-
-
-// function quizQuestionsHere() {
-//     quizQuestionsHere.setAttribute("class", "hide")
-// }
-
-
 
 //var currentQuestion = question[currentQuestionIndex]
 
@@ -106,7 +103,7 @@ function timeTimeBaby() {
 quizStartBtn.addEventListener("click", startQuiz);
 
 // choices of each question become clickable when selected
-choiceBtnA.addEventListener("click", rightAnswer);
-choiceBtnB.addEventListener("click", rightAnswer);
-choiceBtnC.addEventListener("click", rightAnswer);
-choiceBtnD.addEventListener("click", rightAnswer);
+// choiceBtnA.addEventListener("click", rightAnswer);
+// choiceBtnB.addEventListener("click", rightAnswer);
+// choiceBtnC.addEventListener("click", rightAnswer);
+// choiceBtnD.addEventListener("click", rightAnswer);
