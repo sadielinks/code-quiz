@@ -78,15 +78,17 @@ var question = [
 //function to call questions
 function displayQuestion() {
     if (currentQuestionIndex === finalQuestionIndex){
-        return 
+        return quizScoresHere();
     }
-}
 
+var currentQuestion = 
 // make quiz option buttons clickable
 choiceBtnA.addEventListener("click", );
 choiceBtnB.addEventListener("click");
 choiceBtnC.addEventListener("click");
 choiceBtnD.addEventListener("click");
+}
+
 
 // creating function to hide welcome, start the questions and timer
 function startQuiz() {
