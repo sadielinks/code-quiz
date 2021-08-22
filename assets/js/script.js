@@ -2,11 +2,10 @@
 var quizStartHere = document.querySelector("#quizstartpage");
 var quizQuestionsHere = document.querySelector("#quizquestions");
 var quizEndsHere = document.querySelector("#quizoverscreen");
-var quizScoresHere = document.querySelector('#quizhighscores')
 var quizStartBtn = document.querySelector("#startBtn");
 var quizScoreBtn = document.querySelector("#submitBtn");
 var timeTimeBaby = document.querySelector("#timetimebaby");
-var finalScoresHere = document.querySelector("#quizhighscore");
+var finalScoresHere = document.querySelector("#quizhighscores");
 var initialsGoHere = document.querySelector("#intialsgohere");
 var currentQuestionIndex = 0;
 var finalQuestionIndex = currentQuestionIndex.length;
@@ -146,6 +145,8 @@ function userHasScore() {
         };
         // need function to store loc⁄ally
         localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
+        quizEndsHere.setAttribute("class", "hide");
+        finalScoresHere.classList.remove("hide");
     };
 
 
@@ -161,3 +162,6 @@ choiceBtnD.addEventListener("click", checkingForAnswer);
 
 // clicking the submit button will route your 
 quizScoreBtn.addEventListener("click", userHasScore);
+
+// NOTWORKINGYET clicking the Play Again button take you back to the start of the quiz
+playAgainBtn.addEventListener("click", quizStartHere)
