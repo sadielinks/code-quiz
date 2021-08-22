@@ -137,19 +137,36 @@ function timeTimeBaby() {
     }, 1000);
 }
 
-// function to display game over screen with score + intials entry for when the user answers all q's OR their time ran out
+// function to display game over screen with final score, initials input, and stores both in local storage
 function userHasScore() {
-        var baselineScore = {
-            score: userPlayScore,
-            initialsGoHere: initialsGoHere.value.trim()
-        };
-        // need function to store loc⁄ally
-        localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
-        quizEndsHere.setAttribute("class", "hide");
-        finalScoresHere.classList.remove("hide");
+    var savedStorageScores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
+    var currentUser = initialsGoHere.value.trim();
+    var currentHighScore = {
+        name: currentUser,
+        score: userPlayScore 
     };
 
+    savedStorageScores.push(currentHighScore);
+    localStorage.setItem("savedStorageScores", JSON.stringify(savedStorageScores));
+    makeHighScoreList();
+}
 
+
+// now use what was stored in local storage to display on highscore table
+function endScoresTable() {
+    var baselineScore = {
+        score: userPlayScore,
+        initialsGoHere: initialsGoHere.value.trim()
+    };
+    // need function to store locally
+    localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
+    quizEndsHere.setAttribute("class", "hide");
+    finalScoresHere.classList.remove("hide");
+};
+
+
+
+// my wonderful button family:
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
@@ -161,7 +178,7 @@ choiceBtnC.addEventListener("click", checkingForAnswer);
 choiceBtnD.addEventListener("click", checkingForAnswer);
 
 // clicking the submit button will route your 
-quizScoreBtn.addEventListener("click", userHasScore);
+quizScoreBtn.addEventListener("click", endScoresTable);
 
 // NOTWORKINGYET clicking the Play Again button take you back to the start of the quiz
 playAgainBtn.addEventListener("click", quizStartHere)
