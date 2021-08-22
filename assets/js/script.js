@@ -22,7 +22,6 @@ var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
 var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
 var playAgainBtn = document.querySelector('#playagainBtn')
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
-var gameNavBarTimer = document.querySelector('#gamenavbar');
 
 
 
@@ -89,14 +88,14 @@ function displayQuestion() {
     choiceBtnD.innerText = questionShownInQuiz[currentQuestionIndex].D;
 }
 
-// function for checking if the right answer was selected
+// function for checking answers + bulding score
 function checkingForAnswer() {
     var userChoice = this.getAttribute("data-value");
     if (userChoice == questionShownInQuiz[currentQuestionIndex].rightAnswer) {
         alert("Correct!");
     } else {
         alert("That was incorrect 😢");
-        timeLeft -= 10;
+        timeLeft -= 9;
     } if (currentQuestionIndex < questionShownInQuiz.length - 1) {
         currentQuestionIndex++;
         displayQuestion()
@@ -108,8 +107,6 @@ function checkingForAnswer() {
         quizEndsHere.classList.remove("hide");
     }
 }
-
-//var currentQuestion = question[currentQuestionIndex]
 
 // timer function (50 seconds) that subtracts seconds when wrong answers are selected (mwhaha)
 function setTime() {
@@ -163,7 +160,7 @@ function generateHighscores() {
 function endScoresTable() {
     highscoreNamesDisplay.innerHTML = "";
     highscoreValuesDisplay.innerHTML = "";
-    var savedStorageScores = JSON.parse(localStorage.getItem("highscoreNamesDisplay"));
+    var savedStorageScores = JSON.parse(localStorage.getItem("intialsgohere"));
     var baselineScore = {
         score: userPlayScore,
         initialsGoHere: initialsGoHere.value.trim()
