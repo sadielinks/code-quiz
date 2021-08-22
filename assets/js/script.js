@@ -23,8 +23,11 @@ var questions = document.querySelector("#questions")
 var questionShownInQuiz = [
     {
         questionName: "Which is NOT a way to declare a variable in JavaScript?",
-        allChoices: ["var", "let", "allow", "const"],
-        rightAnswer: "allow"
+        A:"var", 
+        B:"let", 
+        C:"allow", 
+        D: "const",
+        rightAnswer: "C"
     },
     {
         questionName: "Which would you use to write into the HTML element?",
@@ -57,27 +60,21 @@ var questionShownInQuiz = [
 function startQuiz() {
     //start timer, unhide questions, call next function to get questions
     quizStartHere.setAttribute("class", "hide");
-    quizQuestionsHere.removeAttribute("class", "hide");
-    timerId = setInterval(timerfunction, 1000);
-    timeTimeBaby.textContent = time;
-    questionShownInQuiz();
+    quizQuestionsHere.classList.remove("hide");
+    displayQuestion();
+    // timerId = setInterval(timerfunction, 1000);
+    // timeTimeBaby.textContent = time;
+    // questionShownInQuiz();
 }
 /* ^^ the start button event listener is at the bottom of thi js */
 
-function quizQuestionsHere() {
-    
-}
-
 // function for questions to start and proceed 
 function displayQuestion() {
-    var currentQuestion = displayQuestion
-    quizScoresHere.style.display = "none";
-    if (currentQuestionIndex === finalQuestionIndex) {
-        return quizScoresHere();
-    } return quizScoresHere();
-
-    var currentQuestion = questionShownInQuiz[currentQuestionIndex];
-
+    questions.innerText = questionShownInQuiz[currentQuestionIndex].questionName;
+    choiceBtnA.innerText = questionShownInQuiz[currentQuestionIndex].A;
+    choiceBtnB.innerText = questionShownInQuiz[currentQuestionIndex].B;
+    choiceBtnC.innerText = questionShownInQuiz[currentQuestionIndex].C;
+    choiceBtnD.innerText = questionShownInQuiz[currentQuestionIndex].D;
 }
 
 //var currentQuestion = question[currentQuestionIndex]
