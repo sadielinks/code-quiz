@@ -1,7 +1,8 @@
 // listing the global variables
 var quizStartHere = document.querySelector("#quizstartpage");
 var quizQuestionsHere = document.querySelector("#quizquestions");
-var quizScoresHere = document.querySelector("#quizhighscore");
+var quizEndsHere = document.querySelector("#quizoverscreen");
+var quizScoresHere = document.querySelector('#quizhighscores')
 var quizStartBtn = document.querySelector("#startBtn");
 var quizScoreBtn = document.querySelector("#submitBtn");
 var timeTimeBaby = document.querySelector("#timetimebaby");
@@ -39,7 +40,7 @@ var questionShownInQuiz = [
         rightAnswer: "D"
     },
     {
-        questionName: "If a key has a function as a value, it is called a _?",
+        questionName: "If a key has a function as a value, it is called a ___?",
         A:"method",
         B:"value",
         C:"expression", 
@@ -47,7 +48,7 @@ var questionShownInQuiz = [
         rightAnswer: "A"
     },
     {
-        questionName: "The length property return the length of a __?",
+        questionName: "The length property return the length of a ___?",
         A:"string",
         B:"boolean",
         C:"number",
@@ -63,11 +64,11 @@ var questionShownInQuiz = [
         rightAnswer: "B"
     },
     {
-        questionName: "This is a question here? 6",
-        A:"x",
-        B:"y",
-        C:"z",
-        D:"zed",
+        questionName: "The conditions inside of if/else statements are enclosed within ___?",
+        A:"parentheses ()",
+        B:"angle brackets <>",
+        C:"curly brackets {}",
+        D:"square brackets []",
         rightAnswer: "C"
     }
 ]
@@ -106,14 +107,16 @@ function checkingForAnswer () {
         displayQuestion()
     } else {
         userPlayScore = timeLeft;
+        // hiding the quiz questions
         quizQuestionsHere.setAttribute("class", "hide")
-        initialsGoHere.classList.remove("hide");
+        // displaying the game over screen
+        quizEndsHere.classList.remove("hide");
     }
 }
 
 //var currentQuestion = question[currentQuestionIndex]
 
-// creating a function for timer that subtracts time when wrong answers are selected
+// timer function that subtracts seconds when wrong answers are selected (mwhaha)
 function timeTimeBaby() {
     var time = 100
     var timerInterval = setInterval(function () {
@@ -125,12 +128,15 @@ function timeTimeBaby() {
             time--;
         } else {
             clearInterval(timerInterval);
-            quizScoreHere();
+            quizEndsHere();
         }
     }, 1000);
 }
 
-
+// function to display game over screen with score + intials entry for when the user answers all q's OR their time ran out
+function userPlayScore() {
+    quizScoreBtn
+}
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
