@@ -165,10 +165,10 @@ function endScoresTable() {
     quizEndsHere.setAttribute("class", "hide");
     finalScoresHere.classList.remove("hide");
 
-    endScoresTable(localStorage).forEach((savedStorageScores)); {
-        console.log(localStorage.getItem(savedStorageScores))
+    savedStorageScores.forEach(value => {
+        console.log(value);
+      });
     }
-}
 
 
 // my wonderful button family:
