@@ -142,11 +142,13 @@ function timeTimeBaby() {
 function userHasScore() {
         var baselineScore = {
             score: userPlayScore,
-            initialsGoHere: initials.value.trim()
+            initialsGoHere: initialsGoHere.value.trim()
         };
         // need function to store loc⁄ally
         localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
     };
+
+
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
