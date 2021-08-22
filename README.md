@@ -16,7 +16,7 @@ This application allows for the user to take a timed code quiz. Their journey st
 ## Screenshots
 
 Welcome Screen:
-![Screenshot](.assets/images/screenshot.png)
+![Screenshot](assets/images/screenshot.png)
 
 Quiz Screen:
 ![Screenshot](.assets/images/screenshot2.png)

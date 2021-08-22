@@ -13,6 +13,7 @@ body {
 .gamenavbar {
     display: flex;
     flex-wrap: wrap;
+    content: center;
     background-color: thistle;
     font-size: 20px;
 }
@@ -21,18 +22,11 @@ body {
     display: none;
 }
 
-#timerdisplay {
-    text-justify: right;
-    font-size: 20px;
-
-}
-
 main {
     display: flex block;
     flex-wrap: wrap;
     margin: 80px auto;
     text-align: center;
-    /* transition: 0.3s; */
     width: 60vw;
 }
 
@@ -64,4 +58,5 @@ footer {
     text-align: center;
     padding: 30px;
     margin: 30px;
+    position: relative;
 }

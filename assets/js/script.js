@@ -14,7 +14,7 @@ var choiceBtnB = document.querySelector("#B");
 var choiceBtnC = document.querySelector("#C");
 var choiceBtnD = document.querySelector("#D");
 var resultsEl = document.querySelector("#answers");
-var timeLeft = 100;
+var timeLeft = 49;
 var timerInterval
 var questions = document.querySelector("#questions");
 var userPlayScore = 0;
@@ -22,6 +22,7 @@ var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
 var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
 var playAgainBtn = document.querySelector('#playagainBtn')
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
+var gameNavBarTimer = document.querySelector('#gamenavbar');
 
 
 
@@ -60,14 +61,6 @@ var questionShownInQuiz = [
         rightAnswer: "A"
     },
     {
-        questionName: "This is a question here? 5",
-        A: "x",
-        B: "y",
-        C: "z",
-        D: "zed",
-        rightAnswer: "B"
-    },
-    {
         questionName: "The conditions inside of if/else statements are enclosed within ___?",
         A: "parentheses ()",
         B: "angle brackets <>",
@@ -83,9 +76,7 @@ function startQuiz() {
     quizStartHere.setAttribute("class", "hide");
     quizQuestionsHere.classList.remove("hide");
     displayQuestion();
-    // timerId = setInterval(timerfunction, 1000);
-    // timeTimeBaby.textContent = time;
-    // questionShownInQuiz();
+    setTime();
 }
 /* ^^ the start button event listener is at the bottom of thi js */
 
@@ -120,64 +111,44 @@ function checkingForAnswer() {
 
 //var currentQuestion = question[currentQuestionIndex]
 
-// timer function that subtracts seconds when wrong answers are selected (mwhaha)
-function timeTimeBaby() {
-    var time = 100
-    var timerInterval = setInterval(function () {
-        if (time > 1) {
-            timeTimeBaby.textContent = time + " seconds";
-            time--;
-        } else if (time === 1) {
-            timeTimeBaby.textContent = time + " second!";
-            time--;
+// timer function (50 seconds) that subtracts seconds when wrong answers are selected (mwhaha)
+function setTime() {
+    var timeInterval = setInterval(function () {
+        if (timeLeft > 1) {
+            timeTimeBaby.textContent = timeLeft + ' seconds';
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            timeTimeBaby.textContent = timeLeft + ' second!';
+            timeLeft--;
         } else {
-            clearInterval(timerInterval);
-            quizEndsHere();
+            timeTimeBaby.textContent = '';
+            clearInterval(timeInterval);
         }
     }, 1000);
 }
 
-// function to display game over screen with final score, initials input, and stores both in local storage
-function userHasScore() {
-    var savedStorageScores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
-    var currentUser = initialsGoHere.value.trim();
-    var currentHighScore = {
-        name: currentUser,
-        score: userPlayScore
-    };
 
-    savedStorageScores.push(currentHighScore);
-    localStorage.setItem("savedStorageScores", JSON.stringify(savedStorageScores));
+// function to calculate and display final score
+function userHasScore() {
+    var currentHighScore = document.querySelector('#intialsgohere')
+    // var currentUser = initialsGoHere.value.trim();
+    if (localStorage.getItem("intialsgohere") == null) {
+        localStorage.setItem("intialsgohere", "[]");
+    }
+
+    var savedStorageScores = JSON.parse(localStorage.getItem("intialsgohere"));
+    savedStorageScores.push(new_data + "--- " + score)
+
+    localStorage.setItem("intialsgohere", JSON.stringify(savedStorageScores));
     makeHighScoreList();
 }
 
-// now use what was stored in local storage to display on highscore table
-function endScoresTable() {
+// function to save 
+function generateHighscores() {
     highscoreNamesDisplay.innerHTML = "";
-    highscoreValuesDisplay.innerHTML = "";
-    var savedStorageScores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
-    var baselineScore = {
-        score: userPlayScore,
-        initialsGoHere: initialsGoHere.value.trim()
-    };
-    // need function to store locally
-    localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
-    quizEndsHere.setAttribute("class", "hide");
-    finalScoresHere.classList.remove("hide");
-
-    savedStorageScores.forEach(value => {
-        document.write("value")
-        const scoreSomethingSomething = document.createElement('initials', 'scores')
-        scoreSomethingSomething.innerHTML = 'Javascript DOM'
-        console.log(value);
-      });
-    }
-
-function generateHighscores(){
-    highscoreDisplayName.innerHTML = "";
     highscoreDisplayScore.innerHTML = "";
     var highscores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
-    for (i=0; i<highscores.length; i++){
+    for (i = 0; i < highscores.length; i++) {
         var newNameSpan = document.createElement("li");
         var newScoreSpan = document.createElement("li");
         newNameSpan.textContent = highscores[i].name;
@@ -185,7 +156,31 @@ function generateHighscores(){
         highscoreDisplayName.appendChild(newNameSpan);
         highscoreDisplayScore.appendChild(newScoreSpan);
     }
+    generateHighscores()
 }
+
+// function to use contents of local storage to display on highscore table
+function endScoresTable() {
+    highscoreNamesDisplay.innerHTML = "";
+    highscoreValuesDisplay.innerHTML = "";
+    var savedStorageScores = JSON.parse(localStorage.getItem("highscoreNamesDisplay"));
+    var baselineScore = {
+        score: userPlayScore,
+        initialsGoHere: initialsGoHere.value.trim()
+    };
+    quizEndsHere.setAttribute("class", "hide");
+    finalScoresHere.classList.remove("hide");
+}
+
+
+
+
+
+
+
+
+
+
 
 
 // my wonderful button family:
