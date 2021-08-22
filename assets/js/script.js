@@ -13,10 +13,11 @@ var choiceBtnA = document.querySelector("#A");
 var choiceBtnB = document.querySelector("#B");
 var choiceBtnC = document.querySelector("#C");
 var choiceBtnD = document.querySelector("#D");
-var resultsEl = document.querySelector("#answers")
-var time = 100
+var resultsEl = document.querySelector("#answers");
+var timeLeft = 100;
 var timerInterval
-var questions = document.querySelector("#questions")
+var questions = document.querySelector("#questions");
+var userPlayScore = 0;
 
 
 // Quiz question array with all possible options & correct answers
@@ -31,28 +32,43 @@ var questionShownInQuiz = [
     },
     {
         questionName: "Which would you use to write into the HTML element?",
-        allChoices: ["document.write()", "window.alert()", "console.log()", "innerHTML"],
-        rightAnswer: "innerHTML"
+        A:"document.write()",
+        B:"window.alert()",
+        C:"console.log()",
+        D:".innerHTML",
+        rightAnswer: "D"
     },
     {
         questionName: "If a key has a function as a value, it is called a _?",
-        allChoices: ["method", "value", "expression", "variable"],
-        rightAnswer: "method"
+        A:"method",
+        B:"value",
+        C:"expression", 
+        D:"variable",
+        rightAnswer: "A"
     },
     {
         questionName: "The length property return the length of a __?",
-        allChoices: ["string", "boolean", "number", "value pair"],
-        rightAnswer: "string"
+        A:"string",
+        B:"boolean",
+        C:"number",
+        D:"value pair",
+        rightAnswer: "A"
     },
     {
         questionName: "This is a question here? 5",
-        allChoices: ["answer1", "answer2", "answer3", "answer4"],
-        rightAnswer: "answer1"
+        A:"x",
+        B:"y",
+        C:"z",
+        D:"zed",
+        rightAnswer: "B"
     },
     {
         questionName: "This is a question here? 6",
-        allChoices: ["answer1", "answer2", "answer3", "answer4"],
-        rightAnswer: "answer1"
+        A:"x",
+        B:"y",
+        C:"z",
+        D:"zed",
+        rightAnswer: "C"
     }
 ]
 
@@ -77,6 +93,24 @@ function displayQuestion() {
     choiceBtnD.innerText = questionShownInQuiz[currentQuestionIndex].D;
 }
 
+// function for checking if the right answer was selected
+function checkingForAnswer () {
+    var userChoice = this.getAttribute("data-value");
+    if (userChoice == questionShownInQuiz[currentQuestionIndex].rightAnswer) {
+        alert("Correct!");
+    } else {
+        alert("That was incorrect 😢");
+        timeLeft -= 10;
+    } if (currentQuestionIndex<questionShownInQuiz.length-1) {
+        currentQuestionIndex ++;
+        displayQuestion()
+    } else {
+        userPlayScore = timeLeft;
+        quizQuestionsHere.setAttribute("class", "hide")
+        initialsGoHere.classList.remove("hide");
+    }
+}
+
 //var currentQuestion = question[currentQuestionIndex]
 
 // creating a function for timer that subtracts time when wrong answers are selected
@@ -96,11 +130,13 @@ function timeTimeBaby() {
     }, 1000);
 }
 
+
+
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
 
-// choices of each question become clickable when selected
-// choiceBtnA.addEventListener("click", rightAnswer);
-// choiceBtnB.addEventListener("click", rightAnswer);
-// choiceBtnC.addEventListener("click", rightAnswer);
-// choiceBtnD.addEventListener("click", rightAnswer);
+// choice buttons of each question become clickable when selected
+choiceBtnA.addEventListener("click", checkingForAnswer);
+choiceBtnB.addEventListener("click", checkingForAnswer);
+choiceBtnC.addEventListener("click", checkingForAnswer);
+choiceBtnD.addEventListener("click", checkingForAnswer);
