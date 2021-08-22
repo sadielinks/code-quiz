@@ -151,9 +151,11 @@ function userHasScore() {
     makeHighScoreList();
 }
 
-
 // now use what was stored in local storage to display on highscore table
 function endScoresTable() {
+    highscoreNamesDisplay.innerHTML = "";
+    highscoreValuesDisplay.innerHTML = "";
+    // var highscores = 
     var baselineScore = {
         score: userPlayScore,
         initialsGoHere: initialsGoHere.value.trim()
