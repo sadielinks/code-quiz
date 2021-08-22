@@ -19,56 +19,61 @@ var timeLeft = 100;
 var timerInterval
 var questions = document.querySelector("#questions");
 var userPlayScore = 0;
+var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
+var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
+var playAgainBtn = document.querySelector('#playagainBtn')
+var clearScoresBtn = document.querySelector('#clearscoresBtn')
+
 
 
 // Quiz question array with all possible options & correct answers
 var questionShownInQuiz = [
     {
         questionName: "Which is NOT a way to declare a variable in JavaScript?",
-        A:"var", 
-        B:"let", 
-        C:"allow", 
+        A: "var",
+        B: "let",
+        C: "allow",
         D: "const",
         rightAnswer: "C"
     },
     {
         questionName: "Which would you use to write into the HTML element?",
-        A:"document.write()",
-        B:"window.alert()",
-        C:"console.log()",
-        D:".innerHTML",
+        A: "document.write()",
+        B: "window.alert()",
+        C: "console.log()",
+        D: ".innerHTML",
         rightAnswer: "D"
     },
     {
         questionName: "If a key has a function as a value, it is called a ___?",
-        A:"method",
-        B:"value",
-        C:"expression", 
-        D:"variable",
+        A: "method",
+        B: "value",
+        C: "expression",
+        D: "variable",
         rightAnswer: "A"
     },
     {
         questionName: "The length property return the length of a ___?",
-        A:"string",
-        B:"boolean",
-        C:"number",
-        D:"value pair",
+        A: "string",
+        B: "boolean",
+        C: "number",
+        D: "value pair",
         rightAnswer: "A"
     },
     {
         questionName: "This is a question here? 5",
-        A:"x",
-        B:"y",
-        C:"z",
-        D:"zed",
+        A: "x",
+        B: "y",
+        C: "z",
+        D: "zed",
         rightAnswer: "B"
     },
     {
         questionName: "The conditions inside of if/else statements are enclosed within ___?",
-        A:"parentheses ()",
-        B:"angle brackets <>",
-        C:"curly brackets {}",
-        D:"square brackets []",
+        A: "parentheses ()",
+        B: "angle brackets <>",
+        C: "curly brackets {}",
+        D: "square brackets []",
         rightAnswer: "C"
     }
 ]
@@ -95,15 +100,15 @@ function displayQuestion() {
 }
 
 // function for checking if the right answer was selected
-function checkingForAnswer () {
+function checkingForAnswer() {
     var userChoice = this.getAttribute("data-value");
     if (userChoice == questionShownInQuiz[currentQuestionIndex].rightAnswer) {
         alert("Correct!");
     } else {
         alert("That was incorrect 😢");
         timeLeft -= 10;
-    } if (currentQuestionIndex<questionShownInQuiz.length-1) {
-        currentQuestionIndex ++;
+    } if (currentQuestionIndex < questionShownInQuiz.length - 1) {
+        currentQuestionIndex++;
         displayQuestion()
     } else {
         userPlayScore = timeLeft;
@@ -135,8 +140,14 @@ function timeTimeBaby() {
 
 // function to display game over screen with score + intials entry for when the user answers all q's OR their time ran out
 function userPlayScore() {
-    quizScoreBtn
-}
+        thingshere.preventDefault();
+        var baselineScore = {
+            score: userPlayScore,
+            initialsGoHere: initials.value.trim()
+        };
+        // need function to store loc⁄ally
+        localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
+    };
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
@@ -146,3 +157,6 @@ choiceBtnA.addEventListener("click", checkingForAnswer);
 choiceBtnB.addEventListener("click", checkingForAnswer);
 choiceBtnC.addEventListener("click", checkingForAnswer);
 choiceBtnD.addEventListener("click", checkingForAnswer);
+
+// clicking the submit button will route your 
+quizScoreBtn.addEventListener("click", userPlayScore);
