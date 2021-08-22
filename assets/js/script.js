@@ -166,9 +166,26 @@ function endScoresTable() {
     finalScoresHere.classList.remove("hide");
 
     savedStorageScores.forEach(value => {
+        document.write("value")
+        const scoreSomethingSomething = document.createElement('initials', 'scores')
+        scoreSomethingSomething.innerHTML = 'Javascript DOM'
         console.log(value);
       });
     }
+
+function generateHighscores(){
+    highscoreDisplayName.innerHTML = "";
+    highscoreDisplayScore.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newNameSpan = document.createElement("li");
+        var newScoreSpan = document.createElement("li");
+        newNameSpan.textContent = highscores[i].name;
+        newScoreSpan.textContent = highscores[i].score;
+        highscoreDisplayName.appendChild(newNameSpan);
+        highscoreDisplayScore.appendChild(newScoreSpan);
+    }
+}
 
 
 // my wonderful button family:
