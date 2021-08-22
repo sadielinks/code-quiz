@@ -143,7 +143,7 @@ function userHasScore() {
     var currentUser = initialsGoHere.value.trim();
     var currentHighScore = {
         name: currentUser,
-        score: userPlayScore 
+        score: userPlayScore
     };
 
     savedStorageScores.push(currentHighScore);
@@ -155,7 +155,7 @@ function userHasScore() {
 function endScoresTable() {
     highscoreNamesDisplay.innerHTML = "";
     highscoreValuesDisplay.innerHTML = "";
-    // var highscores = 
+    var savedStorageScores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
     var baselineScore = {
         score: userPlayScore,
         initialsGoHere: initialsGoHere.value.trim()
@@ -164,8 +164,11 @@ function endScoresTable() {
     localStorage.setItem("baselineScore", JSON.stringify(baselineScore));
     quizEndsHere.setAttribute("class", "hide");
     finalScoresHere.classList.remove("hide");
-};
 
+    endScoresTable(localStorage).forEach((savedStorageScores)); {
+        console.log(localStorage.getItem(savedStorageScores))
+    }
+}
 
 
 // my wonderful button family:
