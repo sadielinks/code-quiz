@@ -139,8 +139,7 @@ function timeTimeBaby() {
 }
 
 // function to display game over screen with score + intials entry for when the user answers all q's OR their time ran out
-function userPlayScore() {
-        thingshere.preventDefault();
+function userHasScore() {
         var baselineScore = {
             score: userPlayScore,
             initialsGoHere: initials.value.trim()
@@ -159,4 +158,4 @@ choiceBtnC.addEventListener("click", checkingForAnswer);
 choiceBtnD.addEventListener("click", checkingForAnswer);
 
 // clicking the submit button will route your 
-quizScoreBtn.addEventListener("click", userPlayScore);
+quizScoreBtn.addEventListener("click", userHasScore);
