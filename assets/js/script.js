@@ -1,11 +1,12 @@
-// listing the global variables
+// listing the global variables & some are re-listed later when used
 var quizStartHere = document.querySelector("#quizstartpage");
 var quizQuestionsHere = document.querySelector("#quizquestions");
 var quizEndsHere = document.querySelector("#quizoverscreen");
 var quizStartBtn = document.querySelector("#startBtn");
 var quizScoreBtn = document.querySelector("#submitBtn");
 var timeTimeBaby = document.querySelector("#timetimebaby");
-var finalScoresHere = document.querySelector("#quizhighscores");
+var allScoresHere = document.querySelector("#quizhighscores");
+var userScoresHere = document.querySelector("#finalscorehere");
 var initialsGoHere = document.querySelector("#intialsgohere");
 var currentQuestionIndex = 0;
 var finalQuestionIndex = currentQuestionIndex.length;
@@ -77,7 +78,6 @@ function startQuiz() {
     displayQuestion();
     setTime();
 }
-/* ^^ the start button event listener is at the bottom of thi js */
 
 // function for questions to start and proceed 
 function displayQuestion() {
@@ -88,7 +88,7 @@ function displayQuestion() {
     choiceBtnD.innerText = questionShownInQuiz[currentQuestionIndex].D;
 }
 
-// function for checking answers + bulding score
+// function to check answers + build score (?)
 function checkingForAnswer() {
     var userChoice = this.getAttribute("data-value");
     if (userChoice == questionShownInQuiz[currentQuestionIndex].rightAnswer) {
@@ -108,6 +108,9 @@ function checkingForAnswer() {
     }
 }
 
+var timeLeft = 49;
+var timePass = 0;
+
 // timer function (50 seconds) that subtracts seconds when wrong answers are selected (mwhaha)
 function setTime() {
     var timeInterval = setInterval(function () {
@@ -124,53 +127,55 @@ function setTime() {
     }, 1000);
 }
 
-
-// function to calculate and display final score
-function userHasScore() {
-    var currentHighScore = document.querySelector('#intialsgohere')
-    // var currentUser = initialsGoHere.value.trim();
-    if (localStorage.getItem("intialsgohere") == null) {
-        localStorage.setItem("intialsgohere", "[]");
-    }
-
-    var savedStorageScores = JSON.parse(localStorage.getItem("intialsgohere"));
-    savedStorageScores.push(new_data + "--- " + score)
-
-    localStorage.setItem("intialsgohere", JSON.stringify(savedStorageScores));
-    makeHighScoreList();
+function stopTime() {
+    timeTimeBaby.textContent = '';
+    clearInterval(timeInterval);
 }
 
-// function to save 
-function generateHighscores() {
-    highscoreNamesDisplay.innerHTML = "";
-    highscoreDisplayScore.innerHTML = "";
-    var highscores = JSON.parse(localStorage.getItem("savedStorageScores")) || [];
-    for (i = 0; i < highscores.length; i++) {
-        var newNameSpan = document.createElement("li");
-        var newScoreSpan = document.createElement("li");
-        newNameSpan.textContent = highscores[i].name;
-        newScoreSpan.textContent = highscores[i].score;
-        highscoreDisplayName.appendChild(newNameSpan);
-        highscoreDisplayScore.appendChild(newScoreSpan);
-    }
-    generateHighscores()
-}
 
-// function to use contents of local storage to display on highscore table
-function endScoresTable() {
-    highscoreNamesDisplay.innerHTML = "";
+var quizScoreBtn = document.querySelector("#submitBtn");
+var allScoresHere = document.querySelector("#quizhighscores");
+var initialsGoHere = document.querySelector("#intialsgohere");
+var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
+var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
+var playAgainBtn = document.querySelector('#playagainBtn')
+var clearScoresBtn = document.querySelector('#clearscoresBtn')
+var highScores = [];
+
+// high scores stored in local storage with for loop
+function getUserScore() {
     highscoreValuesDisplay.innerHTML = "";
-    var savedStorageScores = JSON.parse(localStorage.getItem("intialsgohere"));
-    var baselineScore = {
-        score: userPlayScore,
-        initialsGoHere: initialsGoHere.value.trim()
-    };
-    quizEndsHere.setAttribute("class", "hide");
-    finalScoresHere.classList.remove("hide");
+    show(allScoresHere);
+    highScores = JSON.parse(localStorage.getItem("scores"));
+    for (let i = 0; i < highScores.length; i++) {
+        let scoreItem = document.createElement("div");
+        scoreItem.className += "everybodylookslikethis";
+        console.log(scoreItem)
+        scoreItem.setAttribute("style", "background-color:lavender");
+        scoreItem.textContent = `${(i + 1)}, ${highScores[i].username} - ${highScores[i].userScore}`;
+        allScoresHere.appendChild(scoreItem);
+    }
 }
 
+var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
+var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
+var initialsGoHere = document.querySelector("#intialsgohere");
+var userScoresHere = document.querySelector("#finalscorehere");
 
-
+// need to make an object to push to local storage
+quizScoreBtn.addEventListener("click", function () {
+    let initialsValue = initialsGoHere.value.trim();
+    if (initialsValue) {
+        let userScore = { username: initialsValue, userScore: userScoresHere };
+        initialsGoHere.value = '';
+        highScores = JSON.parse(localStorage.getItem("scores")) || [];
+        highScores.push(userScore)
+        localStorage.setItem("scores", JSON.stringify(highScores));
+        hide(inputScoreEl);
+        renderHighScores();
+        reset();
+    }
+});
 
 
 
@@ -192,7 +197,7 @@ choiceBtnC.addEventListener("click", checkingForAnswer);
 choiceBtnD.addEventListener("click", checkingForAnswer);
 
 // clicking the submit button will route your 
-quizScoreBtn.addEventListener("click", endScoresTable);
+// quizScoreBtn.addEventListener("click", getUserScore);
 
 // NOTWORKINGYET clicking the Play Again button take you back to the start of the quiz
 playAgainBtn.addEventListener("click", quizStartHere)
