@@ -185,8 +185,7 @@ quizScoreBtn.addEventListener("click", function () {
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
 // clear high scores button will also clear local storage
 clearScoresBtn.addEventListener("click", function () {
-    highScores = [];
-    localStorage.setItem("userScore", JSON.stringify(highScores));
+    localStorage.clear();
 });
 
 
@@ -219,5 +218,5 @@ choiceBtnD.addEventListener("click", checkingForAnswer);
 // clicking the submit button will route your 
 // quizScoreBtn.addEventListener("click", getUserScore);
 
-// NOTWORKINGYET clicking the Play Again button take you back to the start of the quiz
+// clicking the Play Again button take you back to the start of the quiz
 playAgainBtn.addEventListener("click", quizStartHere)
