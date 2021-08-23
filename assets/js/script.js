@@ -16,7 +16,7 @@ var choiceBtnC = document.querySelector("#C");
 var choiceBtnD = document.querySelector("#D");
 var resultsEl = document.querySelector("#answers");
 var timeLeft = 49;
-var timerInterval
+var timeInterval
 var questions = document.querySelector("#questions");
 var userPlayScore = 0;
 var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
@@ -111,7 +111,6 @@ function checkingForAnswer() {
 }
 
 var timeLeft = 49;
-var timePass = 0;
 
 // timer function (50 seconds) that subtracts seconds when wrong answers are selected (mwhaha)
 function setTime() {
@@ -124,15 +123,20 @@ function setTime() {
             timeLeft--;
         } else {
             timeTimeBaby.textContent = '';
-            clearInterval(timeInterval);
+            clearInterval(timeLeft);
         }
     }, 1000);
 }
 
-function stopTime() {
-    timeTimeBaby.textContent = '';
-    clearInterval(timeInterval);
-}
+// function stopTime() {
+//     timeTimeBaby.textContent = '0';
+//     clearInterval(timeInterval);
+// }
+
+
+
+
+
 
 
 var quizScoreBtn = document.querySelector("#submitBtn");
@@ -146,7 +150,7 @@ var highScores = [];
 
 // high scores stored in local storage with for loop
 function getUserScore() {
-    highscoreValuesDisplay.innerHTML = "";
+    highscoreNamesDisplay.innerHTML = "";
     allScoresHere.classList.remove("hide");
     highScores = JSON.parse(localStorage.getItem("scores"));
     for (let i = 0; i < highScores.length; i++) {
@@ -165,7 +169,7 @@ var initialsGoHere = document.querySelector("#intialsgohere")
 var userScoresHere = document.querySelector("#finalscorehere");
 var quizEndsHere = document.querySelector("#quizoverscreen");
 
-// need to make an object to push to local storage
+// submit initials button will add & display the high scores - woooot!
 quizScoreBtn.addEventListener("click", function () {
     let initialsValue = initialsGoHere.value.trim();
     if (initialsValue) {
@@ -174,11 +178,21 @@ quizScoreBtn.addEventListener("click", function () {
         highScores = JSON.parse(localStorage.getItem("scores")) || [];
         highScores.push(userScore)
         localStorage.setItem("scores", JSON.stringify(highScores));
-        quizEndsHere.setAttribute("class", "hide")
         getUserScore();
-        reset();
     }
 });
+
+var clearScoresBtn = document.querySelector('#clearscoresBtn')
+// clear high scores button will also clear local storage
+clearScoresBtn.addEventListener("click", function () {
+    highScores = [];
+    localStorage.setItem("userScore", JSON.stringify(highScores));
+});
+
+
+
+
+
 
 
 

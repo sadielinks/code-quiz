@@ -26,6 +26,6 @@ End Screen:
 
 
 ## Links
-[Deployed App](https://github.com/sadielinks/code-quiz)
+[Deployed App](https://sadielinks.github.io/code-quiz/)
 
 [GitHub Repository](https://github.com/sadielinks/code-quiz)
