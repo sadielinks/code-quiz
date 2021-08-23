@@ -22,7 +22,7 @@ Quiz Screen:
 ![Screenshot](assets/images/screenshot2.png)
 
 End Screen:
-![Screenshot](.assets/images/screenshot3.png)
+![Screenshot](assets/images/screenshot3.png)
 
 
 ## Links
