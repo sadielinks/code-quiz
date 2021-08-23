@@ -23,6 +23,8 @@ var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
 var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
 var playAgainBtn = document.querySelector('#playagainBtn')
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
+var viewHighScoresBtn = document.querySelector('#viewhighscoresBtn')
+
 
 
 
@@ -145,7 +147,7 @@ var highScores = [];
 // high scores stored in local storage with for loop
 function getUserScore() {
     highscoreValuesDisplay.innerHTML = "";
-    show(allScoresHere);
+    allScoresHere.classList.remove("hide");
     highScores = JSON.parse(localStorage.getItem("scores"));
     for (let i = 0; i < highScores.length; i++) {
         let scoreItem = document.createElement("div");
@@ -159,8 +161,9 @@ function getUserScore() {
 
 var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
 var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
-var initialsGoHere = document.querySelector("#intialsgohere");
+var initialsGoHere = document.querySelector("#intialsgohere")
 var userScoresHere = document.querySelector("#finalscorehere");
+var quizEndsHere = document.querySelector("#quizoverscreen");
 
 // need to make an object to push to local storage
 quizScoreBtn.addEventListener("click", function () {
@@ -171,8 +174,8 @@ quizScoreBtn.addEventListener("click", function () {
         highScores = JSON.parse(localStorage.getItem("scores")) || [];
         highScores.push(userScore)
         localStorage.setItem("scores", JSON.stringify(highScores));
-        hide(inputScoreEl);
-        renderHighScores();
+        quizEndsHere.setAttribute("class", "hide")
+        getUserScore();
         reset();
     }
 });
@@ -186,6 +189,9 @@ quizScoreBtn.addEventListener("click", function () {
 
 
 // my wonderful button family:
+
+// high scores button that takes you to page
+viewHighScoresBtn.addEventListener("click", getUserScore)
 
 // start button where click event starts the question + timer
 quizStartBtn.addEventListener("click", startQuiz);
