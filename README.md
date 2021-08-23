@@ -6,7 +6,7 @@ By Sadie Sial
 ```
 AS A coding boot camp student
 YOU WILL get to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT you can gauge my progress compared to your peers
+SO THAT you can gauge your progress compared to your peers
 ```
 
 ```
