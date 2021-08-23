@@ -6,7 +6,7 @@ var quizStartBtn = document.querySelector("#startBtn");
 var quizScoreBtn = document.querySelector("#submitBtn");
 var timeTimeBaby = document.querySelector("#timetimebaby");
 var allScoresHere = document.querySelector("#quizhighscores");
-var userScoresHere = document.querySelector("#finalscorehere");
+var finalScoresHere = document.querySelector("#finalscorehere");
 var initialsGoHere = document.querySelector("#intialsgohere");
 var currentQuestionIndex = 0;
 var finalQuestionIndex = currentQuestionIndex.length;
@@ -102,7 +102,7 @@ function checkingForAnswer() {
         currentQuestionIndex++;
         displayQuestion()
     } else {
-        userPlayScore = timeLeft;
+        userPlayScore = timeLeft + 50;
         // hiding the quiz questions
         quizQuestionsHere.setAttribute("class", "hide")
         // displaying the game over screen
@@ -121,23 +121,17 @@ function setTime() {
         } else if (timeLeft === 1) {
             timeTimeBaby.textContent = timeLeft + ' second!';
             timeLeft--;
+            clearInterval(setTime);
         } else {
             timeTimeBaby.textContent = '';
-            clearInterval(timeLeft);
-        }
+             // hiding the quiz questions - GAME OVER
+            quizQuestionsHere.setAttribute("class", "hide")
+            // displaying game over screen
+            quizEndsHere.classList.remove("hide");
+
+        }   
     }, 1000);
 }
-
-// function stopTime() {
-//     timeTimeBaby.textContent = '0';
-//     clearInterval(timeInterval);
-// }
-
-
-
-
-
-
 
 var quizScoreBtn = document.querySelector("#submitBtn");
 var allScoresHere = document.querySelector("#quizhighscores");
@@ -148,7 +142,7 @@ var playAgainBtn = document.querySelector('#playagainBtn')
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
 var highScores = [];
 
-// high scores stored in local storage with for loop
+// high scores stored in local storage with for loop & displayed
 function getUserScore() {
     highscoreNamesDisplay.innerHTML = "";
     allScoresHere.classList.remove("hide");
@@ -158,47 +152,43 @@ function getUserScore() {
         scoreItem.className += "everybodylookslikethis";
         console.log(scoreItem)
         scoreItem.setAttribute("style", "background-color:lavender");
-        scoreItem.textContent = `${(i + 1)}, ${highScores[i].username} - ${highScores[i].userScore}`;
+        scoreItem.textContent = `${(i + 1)}, ${highScores[i].username} - ${highScores[i].userPlayScore}`;
         allScoresHere.appendChild(scoreItem);
+        
     }
 }
+
+// function to display score to user
+function displayTheUserScoreHere() {
+    var finalScoreDisplayed = document.querySelector("#finalscorehere");
+    finalScoreDisplayed.value = `${highScores[i].userPlayScore}`;
+  }
+
 
 var highscoreNamesDisplay = document.querySelector('#highscorenameshere');
 var highscoreValuesDisplay = document.querySelector('#highscorevalueshere');
 var initialsGoHere = document.querySelector("#intialsgohere")
-var userScoresHere = document.querySelector("#finalscorehere");
+var finalScoresHere = document.querySelector("#finalscorehere");
 var quizEndsHere = document.querySelector("#quizoverscreen");
 
 // submit initials button will add & display the high scores - woooot!
 quizScoreBtn.addEventListener("click", function () {
     let initialsValue = initialsGoHere.value.trim();
     if (initialsValue) {
-        let userScore = { username: initialsValue, userScore: userScoresHere };
+        let finalScoresHere = { username: initialsValue, userPlayScore };
         initialsGoHere.value = '';
         highScores = JSON.parse(localStorage.getItem("scores")) || [];
-        highScores.push(userScore)
+        highScores.push(finalScoresHere)
         localStorage.setItem("scores", JSON.stringify(highScores));
         getUserScore();
     }
 });
 
 var clearScoresBtn = document.querySelector('#clearscoresBtn')
-// clear high scores button will also clear local storage
+// clear high scores button to clear local storage & displayed scores
 clearScoresBtn.addEventListener("click", function () {
     localStorage.clear();
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // my wonderful button family:
@@ -214,9 +204,6 @@ choiceBtnA.addEventListener("click", checkingForAnswer);
 choiceBtnB.addEventListener("click", checkingForAnswer);
 choiceBtnC.addEventListener("click", checkingForAnswer);
 choiceBtnD.addEventListener("click", checkingForAnswer);
-
-// clicking the submit button will route your 
-// quizScoreBtn.addEventListener("click", getUserScore);
 
 // clicking the Play Again button take you back to the start of the quiz
 playAgainBtn.addEventListener("click", quizStartHere)
