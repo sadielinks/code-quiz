@@ -29,3 +29,19 @@ End Screen:
 [Deployed App](https://sadielinks.github.io/code-quiz/)
 
 [GitHub Repository](https://github.com/sadielinks/code-quiz)
+
+
+## Technologies Used
+- HTML, CSS, Javascript, and JQuery
+
+
+## Contact Information
+
+- [GitHub Profile](https://github.com/sadielinks)
+- [Portfolio](https://sadielinks.github.io/professional-portfolio/)
+- [Email](mailto:sadiecodes@gmail.com)
+
+
+## License
+
+© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
